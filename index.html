@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelulusan</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap');
+
+        body {
+            overflow-y: hidden;
+            background-color: gainsboro;
+        }
+
+        div {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        p {
+            line-height: 55px;
+            font-family: 'Rubik Burned', system-ui;
+            font-size: 40px;
+            font-weight: 500;
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="demo"></p>
+    </div>
+
+    <script>
+        var countDownDate = new Date("May 5, 2025 00:00:00").getTime();
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+
+            var distance = countDownDate - now;
+
+            var years = Math.floor(distance / (1000 * 60 * 60 * 24 * 30 * 12));
+            var months = Math.floor(distance % (1000 * 60 * 60 * 24 * 30 * 12) / (1000 * 60 * 60 * 24 * 30));
+            var days = Math.floor(distance % (1000 * 60 * 60 * 24 * 30) / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("demo").innerText =
+                `${years} tahun\n${months} bulan\n${days} hari\n${hours} jam 
+                ${minutes} menit\n${seconds} detik`;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
